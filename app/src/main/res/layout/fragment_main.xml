@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".ui.login.MainFragment">
+
+
+    <TextView
+        android:id="@+id/txt_welcome"
+        style="@style/headings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="35dp"
+        android:text="@string/welcome_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/enter_your_"
+        style="@style/normal_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        android:text="@string/enter_your_"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_welcome" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_layput_Emailaddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/textframe"
+        android:hint="@string/email_address"
+        android:inputType="textEmailAddress"
+        app:startIconDrawable="@drawable/baseline_mail_outline_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/enter_your_" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/normal_text"
+            android:inputType="textEmailAddress"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_layout_password"
+        style="@style/normal_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/textframe"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        app:startIconDrawable="@drawable/baseline_lock_open_24"
+        app:endIconMode="password_toggle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_layput_Emailaddress">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/normal_text"
+            android:inputType="textPassword"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/tv_forgot_pass"
+        style="@style/normal_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/forgot_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_layout_password" />
+
+    <Button
+        android:id="@+id/btn_log_in"
+        style="@style/btn_text"
+        android:layout_width="339dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="35dp"
+        android:backgroundTint="#169C89"
+        android:text="@string/log_in"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_forgot_pass" />
+
+    <TextView
+        android:id="@+id/tv_connect_via"
+        style="@style/normal_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="@string/or_connect_via"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_log_in" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/box_google"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginVertical="10dp"
+        android:background="@drawable/shortcutframe"
+        app:layout_constraintEnd_toStartOf="@+id/box_facebook"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_connect_via" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/box_facebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:background="@drawable/shortcutframe"
+        app:layout_constraintEnd_toStartOf="@+id/box_apple"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/box_google"
+        app:layout_constraintTop_toBottomOf="@id/tv_connect_via" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/box_apple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginVertical="10dp"
+        android:background="@drawable/shortcutframe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/box_facebook"
+        app:layout_constraintTop_toBottomOf="@id/tv_connect_via" />
+
+
+    <ImageView
+        android:id="@+id/google_logo"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/google_logo"
+        app:layout_constraintBottom_toBottomOf="@id/box_google"
+        app:layout_constraintEnd_toEndOf="@+id/box_google"
+        app:layout_constraintStart_toStartOf="@id/box_google"
+        app:layout_constraintTop_toTopOf="@id/box_google" />
+
+    <ImageView
+        android:id="@+id/facebook_logo"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/facebook_logo"
+        app:layout_constraintBottom_toBottomOf="@id/box_facebook"
+        app:layout_constraintEnd_toEndOf="@+id/box_facebook"
+        app:layout_constraintStart_toStartOf="@id/box_facebook"
+        app:layout_constraintTop_toTopOf="@id/box_facebook" />
+
+    <ImageView
+        android:id="@+id/apple_logo"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/applelogo"
+        app:layout_constraintBottom_toBottomOf="@id/box_apple"
+        app:layout_constraintEnd_toEndOf="@+id/box_apple"
+        app:layout_constraintStart_toStartOf="@id/box_apple"
+        app:layout_constraintTop_toTopOf="@id/box_apple" />
+
+    <TextView
+        android:id="@+id/tv_terms"
+        style="@style/normal_text"
+        android:layout_width="0dp"
+        android:textSize="16sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        android:gravity="center"
+        android:text="@string/terms_policy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/box_google" />
+
+    <RelativeLayout
+        android:id="@+id/relativelayoutend"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:background="#E8F3F2">
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/register"
+            style="@style/normal_text"/>
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

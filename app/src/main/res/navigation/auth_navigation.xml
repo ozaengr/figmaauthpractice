@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_main">
+
+    <fragment
+        android:id="@+id/navigation_main"
+        android:name="com.desire.figmaauthpractice.ui.login.MainFragment"
+        android:label="login"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_navigation_main_to_navigation_register"
+            app:destination="@id/navigation_register" />
+        <action
+            android:id="@+id/action_navigation_main_to_navigation_forgot"
+            app:destination="@id/navigation_forgot" />
+        <action
+            android:id="@+id/action_navigation_main_to_navigation_terms"
+            app:destination="@id/navigation_terms" />
+    </fragment>
+
+   <fragment
+        android:id="@+id/navigation_register"
+        android:name="com.desire.figmaauthpractice.ui.register.RegisterFragment"
+        android:label="@string/register"
+        tools:layout="@layout/fragment_register" />
+
+    <fragment
+        android:id="@+id/navigation_forgot"
+        android:name="com.desire.figmaauthpractice.ui.PasswordFragment"
+        android:label="@string/forgot_password"
+        tools:layout="@layout/fragment_password" />
+
+    <fragment
+        android:id="@+id/navigation_terms"
+        android:name="com.desire.figmaauthpractice.ui.TermsAndPolicyFragment"
+        android:label="@string/terms_policy"
+        tools:layout="@layout/fragment_terms_and_policy" />
+
+</navigation>
