@@ -32,7 +32,4 @@ interface LoginDao {
     @Query("SELECT * FROM login_table WHERE emailId LIKE:email AND password LIKE:password")
     suspend fun getUser(email : String, password : String) : LoginDataClass
 
-
-
-
 }

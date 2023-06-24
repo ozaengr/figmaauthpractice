@@ -9,4 +9,5 @@ data class rcvModel(
     val image: String,
     val price: Double,
     val title: String
+    
 )

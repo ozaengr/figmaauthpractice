@@ -31,7 +31,5 @@ abstract class LoginDatabase : RoomDatabase() {
                 return instance
             }
         }
-
     }
-
 }

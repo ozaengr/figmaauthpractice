@@ -16,8 +16,4 @@ interface ApiInterface {
     @DELETE("products/{id}")
     fun deleteProduct(@Path("id") id: Int):Call<DeleteProductResponce>
 
-    //https://fakestoreapi.com/products/1
-
-    @GET("products/{id}")
-    fun getproductwithpid(@Path("id") id:Int):Call<rcvModel>
 }

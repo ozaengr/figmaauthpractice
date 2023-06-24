@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel : ViewModel(){
 
-    private val repo : UserRepository
+     val repo : UserRepository
 
     init {
         val userDao = LoginDatabase.getDatabase().loginDao()

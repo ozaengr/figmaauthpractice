@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit
 
 object Retrofit {
 
+
     private val interceptor = run {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.apply {
@@ -32,3 +33,4 @@ object Retrofit {
 
 
 }
+

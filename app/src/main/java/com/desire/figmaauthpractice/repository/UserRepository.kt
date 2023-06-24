@@ -5,7 +5,7 @@ import com.desire.figmaauthpractice.database.LoginDao
 import com.desire.figmaauthpractice.database.LoginDataClass
 import kotlin.math.log
 
-class UserRepository (private val loginDao: LoginDao){
+class   UserRepository (private val loginDao: LoginDao){
 
     var readAllData : LiveData<List<LoginDataClass>> = loginDao.readAllUsers()
 

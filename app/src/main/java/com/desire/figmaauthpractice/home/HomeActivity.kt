@@ -51,7 +51,11 @@ class HomeActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     response.body()?.let {
                         arrayListOfData.addAll(it)
-                        setAdapter()
+
+
+                        binding.rcvItems.layoutManager =
+                            GridLayoutManager(this@HomeActivity,2)
+                        binding.rcvItems.adapter = rcvAdapter(arrayListOfData)
                     }
                 }
             }
@@ -59,11 +63,6 @@ class HomeActivity : AppCompatActivity() {
                 Log.i("Test", "Fail")
             }
         })
-    }
-    private fun setAdapter() {
-        binding.rcvItems.layoutManager =
-            GridLayoutManager(this,2)
-        binding.rcvItems.adapter = rcvAdapter(arrayListOfData)
     }
 
     private fun ivBack() {
