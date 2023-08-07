@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Entity(tableName = "login_table")
-data class LoginDataClass(
+data class User(
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0,
     var name: String = "",

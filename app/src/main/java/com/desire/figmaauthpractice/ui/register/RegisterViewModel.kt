@@ -2,7 +2,7 @@ package com.desire.figmaauthpractice.ui.register
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.desire.figmaauthpractice.database.LoginDataClass
+import com.desire.figmaauthpractice.database.User
 import com.desire.figmaauthpractice.database.LoginDatabase
 import com.desire.figmaauthpractice.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
@@ -17,9 +17,9 @@ class RegisterViewModel : ViewModel(){
         repo = UserRepository(userDao)
     }
 
-    fun addUser(loginDataClass: LoginDataClass){
+    fun addUser(user: User){
         viewModelScope.launch(Dispatchers.IO) {
-            repo.addUser(loginDataClass)
+            repo.addUser(user)
         }
     }
 

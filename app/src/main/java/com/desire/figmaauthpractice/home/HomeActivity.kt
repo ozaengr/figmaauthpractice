@@ -1,14 +1,12 @@
 package com.desire.figmaauthpractice.home
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.desire.figmaauthpractice.retrofit.Retrofit
 import com.desire.figmaauthpractice.databinding.ActivityHomeBinding
-import com.desire.figmaauthpractice.ui.MainActivity
-import com.desire.figmaauthpractice.retrofit.DeleteProductResponce
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,14 +15,14 @@ import retrofit2.Response
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    lateinit var rcvAdapter: rcvAdapter
-    var arrayListOfData = arrayListOf<rcvModel>()
+    private lateinit var adapter: RcvAdapter
+    var arrayListOfData = arrayListOf<RcvModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        Log.i("test","Home Activity onCreate method")
         /*  arrayListOfData = ArrayList<rcvModel>()
 
           arrayListOfData.add(rcvModel("TSHIRT", "BRAND NAME: POLO", R.drawable.img_tshirt))
@@ -36,50 +34,94 @@ class HomeActivity : AppCompatActivity() {
               LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
           binding.rcvItems.adapter = rcvAdapter(arrayListOfData)
   */
-        ivBack()
+        initView()
         getProducts()
     //    database = LoginDatabase.getDatabase(this)
     }
+   /* override fun onStart() {
+        super.onStart()
+        Log.i("test","Home Activity onStart method")
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("test","Home Activity onResume method")
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("test","Home Activity onPause method")
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("test","Home Activity onStop method")
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("test","Home Activity onDestroy method")
+
+    }*/
 
     private fun getProducts() {
-        var call: Call<ArrayList<rcvModel>> = Retrofit.apiInterface.getData()
-        call.enqueue(object : Callback<ArrayList<rcvModel>> {
+        var call: Call<ArrayList<RcvModel>> = Retrofit.apiInterface.getData()
+        call.enqueue(object : Callback<ArrayList<RcvModel>> {
             override fun onResponse(
-                call: Call<ArrayList<rcvModel>>,
-                response: Response<ArrayList<rcvModel>>
+                call: Call<ArrayList<RcvModel>>,
+                response: Response<ArrayList<RcvModel>>
             ) {
                 if (response.isSuccessful) {
                     response.body()?.let {
                         arrayListOfData.addAll(it)
 
-
-                        binding.rcvItems.layoutManager =
+                        adapter = RcvAdapter(arrayListOfData)
+                        binding.rcvAllItems.adapter = adapter
+                        binding.rcvAllItems.layoutManager =
                             GridLayoutManager(this@HomeActivity,2)
-                        binding.rcvItems.adapter = rcvAdapter(arrayListOfData)
+
+
+                        adapter.onItemClick = { item ->
+                            Log.i("test", "${item.id}")
+                            callAPIToDeleteProduct(item.id)
+
+                            var index = adapter.dataArrayList.indexOfFirst { it.id == item.id }
+                            adapter.deleteItem(index)
+                        }
                     }
                 }
             }
-            override fun onFailure(call: Call<ArrayList<rcvModel>>, t: Throwable) {
+            override fun onFailure(call: Call<ArrayList<RcvModel>>, t: Throwable) {
                 Log.i("Test", "Fail")
             }
         })
     }
 
-    private fun ivBack() {
+    private fun initView() {
         binding.ivBack.setOnClickListener {
-            var intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            finish()
         }
     }
     private  fun callAPIToDeleteProduct(id: Int){
-        var call: Call<DeleteProductResponce> = Retrofit.apiInterface.deleteProduct(id)
-        call.enqueue(object : Callback<DeleteProductResponce> {
+        var call: Call<Unit> = Retrofit.apiInterface.deleteProduct(id)
+        call.enqueue(object : Callback<Unit> {
             override fun onResponse(
-                call: Call<DeleteProductResponce>,
-                response: Response<DeleteProductResponce>
+                call: Call<Unit>,
+                response: Response<Unit>
             ) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@HomeActivity, "Deleted", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@HomeActivity, "Failed to Deleted", Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
-            override fun onFailure(call: Call<DeleteProductResponce>, t: Throwable) {
+            override fun onFailure(call: Call<Unit>, t: Throwable) {
+                Toast.makeText(this@HomeActivity,"Not Deleted",Toast.LENGTH_SHORT).show()
             }
         })
     }

@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase
 import com.desire.figmaauthpractice.App
 
 
-@Database(entities = [LoginDataClass::class], version = 1, exportSchema = false)
+@Database(entities = [User::class], version = 1, exportSchema = false)
 abstract class LoginDatabase : RoomDatabase() {
 
     abstract fun loginDao():LoginDao

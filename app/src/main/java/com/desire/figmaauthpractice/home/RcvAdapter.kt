@@ -1,24 +1,29 @@
 package com.desire.figmaauthpractice.home
 
-import android.content.Intent
 import android.view.LayoutInflater
-import android.view.TextureView
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.desire.figmaauthpractice.databinding.RcvlistBinding
 
-class rcvAdapter(
-    val dataArrayList: ArrayList<rcvModel>
-) : RecyclerView.Adapter<rcvAdapter.rcvViewHolder>() {
+class RcvAdapter(val dataArrayList: ArrayList<RcvModel>) :
+    RecyclerView.Adapter<RcvAdapter.rcvViewHolder>() {
 
+    fun deleteItem(index: Int) {
+        dataArrayList.removeAt(index)
+        notifyDataSetChanged()
+    }
 
-    class rcvViewHolder(var view: RcvlistBinding) : RecyclerView.ViewHolder(view.root) {
-        fun bind(rcvModel: rcvModel) {
+    var onItemClick: ((RcvModel) -> Unit)? = null
+
+    inner class rcvViewHolder(var view: RcvlistBinding) : RecyclerView.ViewHolder(view.root) {
+        fun bind(rcvModel: RcvModel, position: Int) {
             view.rcvName.text = rcvModel.category
             view.rcvDiscription.text = rcvModel.description
             Glide.with(view.rcvImage).load(rcvModel.image).into(view.rcvImage)
+            view.btnDelete.setOnClickListener {
+                onItemClick?.invoke(dataArrayList.get(position))
+            }
         }
     }
 
@@ -33,7 +38,7 @@ class rcvAdapter(
     }
 
     override fun onBindViewHolder(holder: rcvViewHolder, position: Int) {
-        holder.bind(dataArrayList[position])
+        holder.bind(dataArrayList[position],position)
     }
 
 }

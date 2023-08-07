@@ -1,8 +1,10 @@
-package com.desire.figmaauthpractice.retrofit
+package com.desire.figmaauthpractice.home
 
 import com.google.gson.annotations.SerializedName
 
-data class DeleteProductResponce(
+
+data class RcvModel(
+
     @SerializedName("category")
     var category: String = "",
     @SerializedName("description")
@@ -15,4 +17,5 @@ data class DeleteProductResponce(
     var price: Int = 0,
     @SerializedName("title")
     var title: String = ""
+    
 )

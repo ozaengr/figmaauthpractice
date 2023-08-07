@@ -23,4 +23,5 @@
     <string name="marketing_data">Marketing Data</string>
     <string name="btn_delete">btn_delete</string>
     <string name="delete">Delete</string>
+    <string name="all_user_data">All User Data</string>
 </resources>

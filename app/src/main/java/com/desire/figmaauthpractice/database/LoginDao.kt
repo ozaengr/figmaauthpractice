@@ -12,24 +12,27 @@ import androidx.room.Update
 interface LoginDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addLoginData(loginDataClass: LoginDataClass)
+    suspend fun addLoginData(user: User)
 
     @Query("SELECT * FROM login_table ORDER BY id ASC")
-    fun readAllUsers(): LiveData<List<LoginDataClass>>
+    fun readAllUsers(): MutableList<User>
 
     @Insert
-    suspend fun insertAll(vararg users: LoginDataClass)
+    suspend fun insertAll(vararg users: User)
 
     @Update
-    suspend fun updateUser(loginDataClass: LoginDataClass)
+    suspend fun updateUser(user: User)
 
     @Delete
-    suspend fun deleteUser(loginDataClass: LoginDataClass)
+    suspend fun deleteUser(user: User)
 
     @Query("DELETE FROM login_table")
     fun deleteAll()
 
     @Query("SELECT * FROM login_table WHERE emailId LIKE:email AND password LIKE:password")
-    suspend fun getUser(email : String, password : String) : LoginDataClass
+    suspend fun getUser(email : String, password : String) : User
 
+
+//   @Query("Update login_table SET name=:name WHERE emailId LIKE:email AND password LIKE:password")
+//   suspend fun getData(name : String,email : String, password : String) : LoginDataClass
 }

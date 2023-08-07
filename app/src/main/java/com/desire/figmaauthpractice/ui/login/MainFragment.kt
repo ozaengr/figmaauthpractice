@@ -7,6 +7,7 @@ import android.text.Spanned
 import android.text.TextUtils
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
@@ -39,6 +40,7 @@ class MainFragment : Fragment() {
         loginViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
         return binding.root
+        Log.i("test","Main Fragment onCreateView method")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,6 +49,38 @@ class MainFragment : Fragment() {
         openSignupButton()
         onClickTerms()
         onClickForgotPass()
+        allUser()
+        Log.i("test","Main Fragment onViewCreated method")
+    }
+
+    private fun allUser() {
+        binding.tvUserData.setOnClickListener {
+            findNavController().navigate(MainFragmentDirections.actionNavigationMainToNavigationAllUser())
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("test","Main Fragment onStart method")
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("test","Main Fragment onResume method")
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("test","Main Fragment onPause method")
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("test","Main Fragment onStop method")
+
     }
 
 
@@ -104,9 +138,9 @@ class MainFragment : Fragment() {
                 ) {
                     if (it != null) {
                         Toast.makeText(requireContext(), "Success", Toast.LENGTH_LONG).show()
-                        var intent =
+                        val intent =
                             android.content.Intent(requireContext(), HomeActivity::class.java)
-                        startActivity(intent)
+                            startActivity(intent)
                     }else{
                         Toast.makeText(requireContext(), "User not found", Toast.LENGTH_LONG).show()
                     }

@@ -7,6 +7,7 @@ import android.text.Spanned
 import android.text.TextUtils
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
@@ -17,9 +18,8 @@ import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.desire.figmaauthpractice.database.LoginDataClass
+import com.desire.figmaauthpractice.database.User
 import com.desire.figmaauthpractice.databinding.FragmentRegisterBinding
-import com.desire.figmaauthpractice.home.HomeActivity
 
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
@@ -33,6 +33,7 @@ class RegisterFragment : Fragment() {
         binding = FragmentRegisterBinding.inflate(layoutInflater)
         registerViewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
         return binding.root
+        Log.i("test","Register Fragment onCreateView method")
     }
 
 
@@ -41,6 +42,31 @@ class RegisterFragment : Fragment() {
 
         initView()
         onClickLoginBtn()
+        Log.i("test","Register Fragment onViewCreated method")
+
+    }
+    override fun onStart() {
+        super.onStart()
+        Log.i("test","Register Fragment onStart method")
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("test","Register Fragment onResume method")
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("test","Register Fragment onPause method")
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("test","Register Fragment onStop method")
+
     }
 
     private fun initView() {
@@ -72,11 +98,11 @@ class RegisterFragment : Fragment() {
             } else {
                 Toast.makeText(requireContext(), "Registered successfully", Toast.LENGTH_SHORT)
                     .show()
-                val loginDataClass = LoginDataClass()
-                loginDataClass.name = binding.textInputName.text.toString()
-                loginDataClass.emailId = binding.textInputEmail.text.toString()
-                loginDataClass.password = binding.textInputPassword.text.toString()
-                registerViewModel.addUser(loginDataClass)
+                val user = User()
+                user.name = binding.textInputName.text.toString()
+                user.emailId = binding.textInputEmail.text.toString()
+                user.password = binding.textInputPassword.text.toString()
+                registerViewModel.addUser(user)
                 findNavController().navigateUp()
             }
         }

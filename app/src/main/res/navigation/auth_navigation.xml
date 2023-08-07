@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
@@ -19,6 +20,9 @@
         <action
             android:id="@+id/action_navigation_main_to_navigation_terms"
             app:destination="@id/navigation_terms" />
+        <action
+            android:id="@+id/action_navigation_main_to_navigation_all_user"
+            app:destination="@id/navigation_all_users" />
     </fragment>
 
    <fragment
@@ -38,5 +42,11 @@
         android:name="com.desire.figmaauthpractice.ui.TermsAndPolicyFragment"
         android:label="@string/terms_policy"
         tools:layout="@layout/fragment_terms_and_policy" />
+
+    <fragment
+        android:id="@+id/navigation_all_users"
+        android:name="com.desire.figmaauthpractice.ui.alluser.AllUserFragment"
+        android:label="@string/all_user_data"
+        tools:layout="@layout/fragment_all_user" />
 
 </navigation>
